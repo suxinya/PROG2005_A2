@@ -5,6 +5,7 @@
     font-family: Arial, sans-serif;
 }
 
+/*Responsive container, adaptable to narrow/wide mobile screens*/
 .container {
     max-width: 1200px;
     margin: 20px auto;
@@ -16,6 +17,7 @@ h1, h2 {
     text-align: center;
 }
 
+/* Input area: single column on mobile devices, multiple columns on desktop devices*/
 .input-section {
     display: grid;
     grid-template-columns: 1fr;
@@ -46,13 +48,14 @@ button {
     background-color: #2c3e50;
     color: white;
     cursor: pointer;
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* Button spanning columns, more user-friendly on mobile devices*/
 }
 
 button:hover {
     background-color: #34495e;
 }
 
+/* Feedback area: Replace alert with different colors for different states*/
 .feedback {
     padding: 15px;
     border-radius: 4px;
@@ -73,6 +76,7 @@ button:hover {
     display: block;
 }
 
+/* Display area: Responsive cards*/
 .display-section {
     margin-top: 30px;
 }
@@ -92,9 +96,9 @@ button:hover {
 .inventory-item p {
     margin: 5px 0;
 }
-/* Day 3: Edit/Delete Function Input and Button Styles */
+/* Day 3: Edit/Delete Function Input Box+Button Style */
 .func-input {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1; /* Cross column display, mobile friendly */
     margin-top: 10px;
 }
 
@@ -116,7 +120,7 @@ button:hover {
     background-color: #c0392b;
 }
 
-/* Day 3: Delete confirmation prompt button style */
+/* Day 3: Button style for deleting confirmation prompt */
 .confirm-buttons {
     margin-top: 10px;
     display: flex;
@@ -138,4 +142,32 @@ button:hover {
 
 .confirm-no {
     background-color: #2ecc71;
+}
+/* Day 4: Search/Filter Function Style */
+#filterPopularBtn {
+    grid-column: 1 / -1;
+    margin-top: 5px;
+    background-color: #9b59b6;
+}
+
+#filterPopularBtn:hover {
+    background-color: #8e44ad;
+}
+
+#showAllBtn {
+    grid-column: 1 / -1;
+    margin-top: 5px;
+    background-color: #2ecc71;
+}
+
+#showAllBtn:hover {
+    background-color: #27ae60;
+}
+
+/* No search/filter result prompt style */
+.no-result {
+    text-align: center;
+    padding: 20px;
+    color: #7f8c8d;
+    font-size: 16px;
 }

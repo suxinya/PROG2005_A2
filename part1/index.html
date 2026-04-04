@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Responsive core tags that meet mobile adaptation requirements -->
+    <!--Responsive core tags, meeting mobile adaptation requirements-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory System - TypeScript Part1</title>
     <link rel="stylesheet" href="style.css">
@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Inventory Management System</h1>
-        <!-- Operation area: Minimalist form, retaining only core input items -->
+        <!-- Operation area: minimalist form, retaining only core input items-->
         <div class="input-section">
             <input type="text" id="itemId" placeholder="Item ID (only)" required>
             <input type="text" id="itemName" placeholder="Item Name (Required)" required>
@@ -37,30 +37,32 @@
                 <option value="No">No</option>
             </select>
             <textarea id="comment" placeholder="Comment on item (optional)"></textarea>
-            <!-- Original input box+button for adding functions -->
             <button id="addBtn">Add Item</button>
-
-            <!-- Day 3: Edit/Delete Function DOM Elements -->
+            <!-- Day3 New: Edit/Delete Function DOM Elements -->
             <!-- Edit function -->
-            <input type="text" id="editItemName" placeholder="Edit: Enter Item Name" class="func-input">
-            <button id="editBtn">Load Item Information</button>
+            <input type="text" id="editItemName" placeholder="Editor: Enter product name" class="func-input">
+            <button id="editBtn">Load product information</button>
             <button id="saveEditBtn">Save Edit</button>
 
             <!-- Delete function -->
-            <input type="text" id="deleteItemName" placeholder="Delete: Enter Item Name" class="func-input">
-            <button id="deleteBtn">Delete Item</button>
-
-            </div> <!-- Close input-section -->
+            <input type="text" id="deleteItemName" placeholder="Delete: Enter product name" class="func-input">
+            <button id="deleteBtn">Delete product</button>
+            <!--Day 4: Search+Filter Function DOM Elements -->
+            <!-- search function -->
+            <input type="text" id="searchInput" placeholder="Search: Fuzzy matching of product names" class="func-input">
+            <!-- Filtering function -->
+            <button id="filterPopularBtn">Display popular products</button>
+            <button id="showAllBtn">Display all products</button>
         </div>
-        <!-- Interactive feedback area -->
+        <!--Interactive feedback area-->
         <div class="feedback" id="feedback"></div>
-        <!-- Data display area -->
+        <!--Data display area-->
         <div class="display-section">
             <h2>Inventory List</h2>
             <div id="inventoryList"></div>
         </div>
     </div>
-    <!-- Introducing TypeScript compiled JS files -->
-    <script src="app.js"></script>
+    <!-- Import the JS file compiled from TypeScript-->
+    <script type="module" src="dist/app.js"></script>
 </body>
 </html>

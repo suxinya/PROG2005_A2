@@ -23,13 +23,17 @@ let inventory = [
         isPopular: 'No'
     }
 ];
-// Day 3: DOM elements for obtaining edit/delete functionality
+// Day 4: Get search/filter function DOM elements
+const searchInput = document.getElementById('searchInput');
+const filterPopularBtn = document.getElementById('filterPopularBtn');
+const showAllBtn = document.getElementById('showAllBtn');
+// New on Day 3: DOM elements for obtaining edit/delete functionality
 const editItemNameInput = document.getElementById('editItemName');
 const editBtn = document.getElementById('editBtn');
 const saveEditBtn = document.getElementById('saveEditBtn');
 const deleteItemNameInput = document.getElementById('deleteItemName');
 const deleteBtn = document.getElementById('deleteBtn');
-// Get DOM elements
+//Get DOM elements
 const feedback = document.getElementById('feedback');
 const itemIdInput = document.getElementById('itemId');
 const itemNameInput = document.getElementById('itemName');
@@ -94,10 +98,38 @@ function clearInputFields() {
     stockStatusInput.value = '';
     isPopularInput.value = '';
     commentInput.value = '';
-    itemIdInput.disabled = false;
     //Day 3: Clear edit/delete input box
     editItemNameInput.value = '';
     deleteItemNameInput.value = '';
+    //Day 4: Clear search input box
+    searchInput.value = '';
+    itemIdInput.disabled = false;
+}
+// Day 4: General rendering function, rendering specified inventory array
+function renderItems(items) {
+    inventoryList.innerHTML = '';
+    // Display prompt when there is no result
+    if (items.length === 0) {
+        const noResultDiv = document.createElement('div');
+        noResultDiv.className = 'no-result';
+        noResultDiv.textContent = 'There are currently no matching product data available';
+        inventoryList.appendChild(noResultDiv);
+        return;
+    }
+    // Render each product when results are available
+    items.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'inventory-item';
+        itemDiv.innerHTML = `
+            <h3>${item.itemName} <small>(ID: ${item.itemId})</small></h3>
+            <p><strong>Classification:</strong>${item.category}</p>
+            <p><strong>Quantity:</strong>${item.quantity} | <strong>Price:</strong>$${item.price.toFixed(2)}</p>
+            <p><strong>Supplier:</strong>${item.supplierName}</p>
+            <p><strong>Inventory status:</strong>${item.stockStatus} | <strong>Is it popular?</strong>${item.isPopular}</p>
+            ${item.comment ? `<p><strong>Note:</strong>${item.comment}</p>` : ''}
+        `;
+        inventoryList.appendChild(itemDiv);
+    });
 }
 //Day2 Enhancement: Core Function - Add Product
 function addItem() {
@@ -222,6 +254,34 @@ function deleteItem() {
         showFeedback('The deletion has been canceled!', true);
     });
 }
+// Day 4: Function 5- Fuzzy Search for Product Names
+function searchItem() {
+    const searchKeyword = searchInput.value.trim().toLowerCase();
+    // Display all products without keywords
+    if (searchKeyword === '') {
+        renderInventoryList();
+        return;
+    }
+    // Fuzzy matching of product names
+    const filteredItems = inventory.filter(item => item.itemName.toLowerCase().includes(searchKeyword));
+    renderItems(filteredItems);
+    // Prompt when there is no matching result
+    if (filteredItems.length === 0) {
+        showFeedback('No products containing the keyword were found!', false);
+    }
+}
+// Day 4: Function 6- Filter popular products
+function filterPopularItems() {
+    const popularItems = inventory.filter(item => item.isPopular === 'Yes');
+    renderItems(popularItems);
+    // Prompt when there are no popular products
+    if (popularItems.length === 0) {
+        showFeedback('There are currently no products marked as popular!', false);
+    }
+    else {
+        showFeedback('All popular products have been filtered out!', true);
+    }
+}
 // Render inventory list
 function renderInventoryList() {
     inventoryList.innerHTML = '';
@@ -248,6 +308,16 @@ function initPage() {
     editBtn.addEventListener('click', loadEditItem);
     saveEditBtn.addEventListener('click', saveEditItem);
     deleteBtn.addEventListener('click', deleteItem);
+    // Day 4:Search for products
+    searchInput.addEventListener('input', searchItem);
+    // Day 4:Filter popular products
+    filterPopularBtn.addEventListener('click', filterPopularItems);
+    // Day 4:Restore display of all products
+    showAllBtn.addEventListener('click', () => {
+        renderInventoryList();
+        clearInputFields();
+        showFeedback('All products have been restored to display!', true);
+    });
 }
-// Start the application
+// Launch the application
 initPage();
