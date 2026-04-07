@@ -1,1 +1,31 @@
-<p>search works!</p>
+<div class="card">
+  <h2 style="color: #2d3748; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem;">Search & Filter</h2>
+
+  <div class="search-controls">
+    <input
+      type="text"
+      [(ngModel)]="keyword"
+      placeholder="Search by item name..."
+      class="search-input"
+    >
+    <select [(ngModel)]="category" class="category-filter">
+      <option value="">All Categories</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Furniture">Furniture</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Tools">Tools</option>
+      <option value="Miscellaneous">Miscellaneous</option>
+    </select>
+  </div>
+
+  <div class="results-grid">
+    <div class="result-item" *ngFor="let item of filtered">
+      <h3>{{ item.itemName }}</h3>
+      <p><strong>ID:</strong> {{ item.itemId }}</p>
+      <p><strong>Category:</strong> {{ item.category }}</p>
+      <p><strong>Price:</strong> ${{ item.price.toFixed(2) }}</p>
+      <p><strong>Supplier:</strong> {{ item.supplierName }}</p>
+    </div>
+    <p *ngIf="filtered.length === 0" class="no-results">No items match your search criteria.</p>
+  </div>
+</div>

@@ -1,13 +1,25 @@
-<!-- navigation bar -->
-<nav class="navbar">
-  <a routerLink="/home">Home Page</a>
-  <a routerLink="/inventory">Inventory Management</a>
-  <a routerLink="/search">Search Filtering</a>
-  <a routerLink="/privacy">Privacy Security</a>
-  <a routerLink="/help">Help</a>
+<!-- Global responsive navigation bar: all pages are displayed -->
+<nav class="global-nav">
+  <div class="nav-container">
+    <!-- Application Name -->
+    <h1 class="nav-brand">Angular Inventory System</h1>
+    <!-- Navigation Links: 5 Pages -->
+    <ul class="nav-links">
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/inventory" routerLinkActive="active">Inventory Operation</a></li>
+      <li><a routerLink="/search" routerLinkActive="active">Search & Filter</a></li>
+      <li><a routerLink="/privacy" routerLinkActive="active">Privacy & Security</a></li>
+      <li><a routerLink="/help" routerLinkActive="active">Help</a></li>
+    </ul>
+  </div>
 </nav>
 
-<!--Page Content -->
-<div class="container">
+<!-- Routing exit: The content of the core components will be rendered here -->
+<main class="page-container">
   <router-outlet></router-outlet>
-</div>
+</main>
+
+<!-- Global Footer -->
+<footer class="global-footer">
+  <p>PROG2005 A2 Assessment | Angular + TypeScript Inventory Management System</p>
+</footer>

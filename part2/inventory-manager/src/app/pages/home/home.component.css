@@ -1,0 +1,75 @@
+.home-container {
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+.home-container h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.app-intro {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #34495e;
+}
+
+.core-purpose h3, .key-features h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.core-purpose ul {
+  list-style-position: inside;
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  color: #34495e;
+}
+
+.core-purpose li {
+  margin-bottom: 0.5rem;
+}
+
+.feature-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .feature-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.feature-card {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-card h4 {
+  color: #3498db;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  color: #7f8c8d;
+}

@@ -1,0 +1,102 @@
+/* Form grid layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.full-width { grid-column: 1 / -1; }
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+/* Button group */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-2px); }
+.btn-add { background: #10b981; }
+.btn-load { background: #3b82f6; }
+.btn-save { background: #8b5cf6; }
+.btn-delete { background: #ef4444; }
+
+/* Feedback prompt */
+.feedback-alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* Inventory list styles */
+.inventory-list {
+  display: grid;
+  gap: 1rem;
+}
+.inventory-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.2rem;
+  transition: background 0.2s;
+}
+.inventory-item:hover { background: #f1f5f9; }
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.8rem;
+}
+.id-badge {
+  background: #e2e8f0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #4a5568;
+}
+.status-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.instock { background: #d1fae5; color: #065f46; }
+.lowstock { background: #fef3c7; color: #92400e; }
+.outofstock { background: #fee2e2; color: #991b1b; }
+.item-details p { color: #64748b; margin: 0.3rem 0; }

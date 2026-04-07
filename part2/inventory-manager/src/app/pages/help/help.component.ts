@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-help',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './help.component.html',
-  styleUrl: './help.component.css'
+  styleUrls: ['./help.component.css']
 })
-export class HelpComponent {
-
-}
+export class HelpComponent {}

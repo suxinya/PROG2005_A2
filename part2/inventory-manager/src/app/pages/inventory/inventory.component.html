@@ -1,1 +1,97 @@
-<p>inventory works!</p>
+<div class="card">
+  <h2 style="color: #2d3748; border-bottom: 2px solid #38bdf8; padding-bottom: 0.5rem;">Inventory Operation</h2>
+  <p style="color: #718096; margin-bottom: 1.5rem;">Manage all inventory items here. All fields are required except Comment.</p>
+
+  <!-- Feedback prompt -->
+  <div
+    class="feedback-alert"
+    [class.success]="feedback.type === 'success'"
+    [class.error]="feedback.type === 'error'"
+    *ngIf="feedback.message"
+  >
+    {{ feedback.message }}
+  </div>
+
+  <!-- Form area -->
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Item ID (*)</label>
+      <input type="text" [(ngModel)]="newItem.itemId" name="itemId" placeholder="Unique ID" required>
+    </div>
+    <div class="form-group">
+      <label>Item Name (*)</label>
+      <input type="text" [(ngModel)]="newItem.itemName" name="itemName" placeholder="Item Name" required>
+    </div>
+    <div class="form-group">
+      <label>Category (*)</label>
+      <select [(ngModel)]="newItem.category" name="category">
+        <option value="Electronics">Electronics</option>
+        <option value="Furniture">Furniture</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Tools">Tools</option>
+        <option value="Miscellaneous">Miscellaneous</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Quantity (*)</label>
+      <input type="number" [(ngModel)]="newItem.quantity" name="quantity" min="0" placeholder="0" required>
+    </div>
+    <div class="form-group">
+      <label>Price (*)</label>
+      <input type="number" [(ngModel)]="newItem.price" name="price" min="0" step="0.01" placeholder="0.00" required>
+    </div>
+    <div class="form-group">
+      <label>Supplier Name (*)</label>
+      <input type="text" [(ngModel)]="newItem.supplierName" name="supplierName" placeholder="Supplier" required>
+    </div>
+    <div class="form-group">
+      <label>Stock Status (*)</label>
+      <select [(ngModel)]="newItem.stockStatus" name="stockStatus">
+        <option value="In Stock">In Stock</option>
+        <option value="Low Stock">Low Stock</option>
+        <option value="Out of Stock">Out of Stock</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Popular Item (*)</label>
+      <select [(ngModel)]="newItem.isPopular" name="isPopular">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+    <div class="form-group full-width">
+      <label>Comment (Optional)</label>
+      <textarea [(ngModel)]="newItem.comment" name="comment" rows="3" placeholder="Additional notes..."></textarea>
+    </div>
+  </div>
+
+  <!-- Button group -->
+  <div class="button-group">
+    <button class="btn btn-add" (click)="addItem()">Add Item</button>
+    <button class="btn btn-load" (click)="loadItem()">Load Item</button>
+    <button class="btn btn-save" (click)="saveEdit()">Save Edit</button>
+    <button class="btn btn-delete" (click)="deleteItem()">Delete Item</button>
+  </div>
+</div>
+
+<!-- Inventory list -->
+<div class="card">
+  <h3>Current Inventory List</h3>
+  <div class="inventory-list" *ngIf="inventoryService.inventory.length > 0; else noData">
+    <div class="inventory-item" *ngFor="let item of inventoryService.inventory">
+      <div class="item-header">
+        <h4>{{ item.itemName }} <span class="id-badge">(ID: {{ item.itemId }})</span></h4>
+        <span class="status-badge {{ item.stockStatus | lowercase }}">{{ item.stockStatus }}</span>
+      </div>
+      <div class="item-details">
+        <p><strong>Category:</strong> {{ item.category }}</p>
+        <p><strong>Qty:</strong> {{ item.quantity }} | <strong>Price:</strong> ${{ item.price.toFixed(2) }}</p>
+        <p><strong>Supplier:</strong> {{ item.supplierName }}</p>
+        <p *ngIf="item.comment"><strong>Comment:</strong> {{ item.comment }}</p>
+      </div>
+    </div>
+  </div>
+  <ng-template #noData>
+    <p style="text-align: center; color: #a0aec0; padding: 2rem;">No items in inventory yet. Add your first item above!</p>
+  </ng-template>
+</div>

@@ -1,4 +1,3 @@
-// src/app/app.routes.ts
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
@@ -12,6 +11,5 @@ export const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
   { path: 'search', component: SearchComponent },
   { path: 'privacy', component: PrivacyComponent },
-  { path: 'help', component: HelpComponent },
-  { path: '**', redirectTo: 'home' }
+  { path: 'help', component: HelpComponent }
 ];
